@@ -1,0 +1,53 @@
+/ {
+        buttons {
+                compatible = "gpio-keys";
+                /*
+                 * Add up to 4 total buttons in child nodes as shown here.
+                 */
+                button0: button_0 {
+                        // Unused
+                        gpios = <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                        label = "Button 0";
+                };
+                button1: button_1 {
+                        // Unused
+                        gpios = <&gpio0 18 (GPIO_PULL_DOWN | GPIO_ACTIVE_LOW)>;
+                        label = "Button 1";
+                };
+                button2: button_2 {
+                        // Unused
+                        gpios = <&gpio1 12 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                        label = "Button 2";
+                };
+                button3: button_3 {
+                        /* Button 3 on P1.06, no internal pull resistor,
+                         * low is pressed. */
+                        gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
+                        label = "Button 3";
+                };
+        };
+    
+        leds {
+            compatible = "gpio-leds";
+            led_0 {
+                    /* LED 1 GREEN on P0.6, LED on when pin is high */
+                    gpios = < &gpio0 6 GPIO_ACTIVE_LOW >;
+                    label = "LED 1 GREEN";
+            };
+            led_1 {
+                    /* LED 2 RED on P0.08, LED on when pin is low */
+                    gpios = < &gpio0 8 GPIO_ACTIVE_LOW >;
+                    label = "LED 2 RED";
+            };
+            led_2 {
+                    /* LED 2 GREEN on P1.09, on when low */
+                    gpios = < &gpio1 9 GPIO_ACTIVE_LOW >;
+                    label = "LED 2 GREEN";
+            };
+            led_3 {
+                    /* LED 2 on P0.12, on when high */
+                    gpios = < &gpio0 12 GPIO_ACTIVE_LOW >;
+                    label = "LED 2 BLUE";
+            };
+        };
+};
